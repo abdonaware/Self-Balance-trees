@@ -30,6 +30,23 @@ public class Main {
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
+    public void deleteFromFile(String filePath) {
+        int count = 0;
+        int existingCount = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (selfBalanceTree.delete(line.trim())) {
+                    count++;
+                } else {
+                    existingCount++;
+                }
+            }
+            System.out.println("Deleted: " + count + ", Not found: " + existingCount);
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -91,7 +108,7 @@ public class Main {
                 case 4:
                     System.out.println("Enter file path for batch delete: ");
                     String deleteFilePath = scanner.nextLine();
-                    new Main(selfBalanceTree).readFromFile(deleteFilePath);
+                    new Main(selfBalanceTree).deleteFromFile(deleteFilePath);
                     break;
                 case 5:
                     System.out.println("Enter value to search: ");
