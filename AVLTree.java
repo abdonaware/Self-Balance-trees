@@ -1,11 +1,11 @@
 public class AVLTree implements SelfBalanceTreeInterface {
     class Node {
-        int value;
+        String  value;
         Node left;
         Node right;
         int height;
 
-        public Node(int value) {
+        public Node(String  value) {
             this.value = value;
             this.height = 1;
             this.left = null;
@@ -13,6 +13,7 @@ public class AVLTree implements SelfBalanceTreeInterface {
         }
     }
     private Node root = null;
+    private int size = 0;
    public int height(Node node) {
         if (node == null) {
             return 0;
@@ -71,29 +72,33 @@ public class AVLTree implements SelfBalanceTreeInterface {
         }
         return root;
     }
-    public void insert(int value) {
+    @Override
+    public boolean insert(String value) {
+        if (search(value)) return false; // Avoid duplicates
         root = insert(root, value);
+        size++;
+        return true;
     }
-private Node insert(Node current, int value) {
+private Node insert(Node current, String value) {
     if (current == null) {
         return new Node(value);
     }
-    if (value < current.value) {
+    if (value.compareTo(current.value) < 0) {
         current.left = insert(current.left, value);
-    } else if (value > current.value) {
+    } else if (value.compareTo(current.value) > 0) {
         current.right = insert(current.right, value);
     }
     return balanceTree(current);
  }
- 
-    public boolean search(int value){
+
+    public boolean search(String value){
         return search(root, value) != null;
     }
-    private Node search(Node current, int value) {
-        if (current == null || value == current.value) {
+    private Node search(Node current, String value) {
+        if (current == null || value.equals(current.value)) {
             return current;
         }
-        if (value < current.value) {
+        if (value.compareTo(current.value) < 0) {
             return search(current.left, value);
         } else {
             return search(current.right, value);   
@@ -104,13 +109,13 @@ private Node insert(Node current, int value) {
             root = root.left;
         return root;
     }
-    private Node delete(Node root, int key) {
+    private Node delete(Node root, String key) {
     if (root == null){
         return null;
     }
-    if (key < root.value) {
+    if (key.compareTo(root.value) < 0) {
         root.left = delete(root.left, key);
-    } else if (key > root.value) {
+    } else if (key.compareTo(root.value) > 0) {
         root.right = delete(root.right, key);
     } else {
         // Node with one or no child
@@ -127,9 +132,10 @@ private Node insert(Node current, int value) {
     }
      return balanceTree(root);
    }
-    public boolean delete(int value) {
+    public boolean delete(String value) {
         if (!search(value)) return false;
         root = delete(root, value);
+        size--;
         return true;
     }
     public void traverseInOrder() {
@@ -165,46 +171,14 @@ private Node insert(Node current, int value) {
         traversePostOrder(node.right);
         System.out.print(node.value + " ");
     }
+    public int getHeight() {
+        return height(root);
+    }
+    public int getSize() {
+        return size;
+    }
 
     
-    public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
-
-        // Test insertions
-        System.out.println("Inserting values...");
-        int[] valuesToInsert = {10, 20, 30, 40, 50, 25};
-        for (int val : valuesToInsert) {
-            tree.insert(val);
-            System.out.println("Inserted: " + val);
-        }
-
-        // Test traversals
-        System.out.println("\nIn-order Traversal (should be sorted):");
-        tree.traverseInOrder();
-
-        System.out.println("Pre-order Traversal:");
-        tree.traversePreOrder();
-
-        System.out.println("Post-order Traversal:");
-        tree.traversePostOrder();
-
-        // Test search
-        System.out.println("\nSearching for 25: " + tree.search(25));  // true
-        System.out.println("Searching for 100: " + tree.search(100)); // false
-
-        // Test deletion
-        System.out.println("\nDeleting 25...");
-        System.out.println("Deleted: " + tree.delete(25)); // true
-
-        System.out.println("Deleting 100...");
-        System.out.println("Deleted: " + tree.delete(100)); // false
-
-        // Traversals after deletion
-        System.out.println("\nIn-order Traversal after deletion:");
-        tree.traverseInOrder();
-
-        System.out.println("Pre-order Traversal after deletion:");
-        tree.traversePreOrder();
-    }
+   
 }
 
