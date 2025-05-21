@@ -25,7 +25,7 @@ public class Main {
                     existingCount++;
                 }
             }
-            System.out.println("Inserted: " + count + ", Already exists: " + existingCount);
+            System.out.println(GREEN+"Inserted: " + count + RED+ ", Already exists: " + existingCount + RESET);
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
