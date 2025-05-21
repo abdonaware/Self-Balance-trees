@@ -104,35 +104,39 @@ private Node insert(Node current, String value) {
             return search(current.right, value);   
         }
     }
-    private Node getSuccessor(Node root) {
-        while (root.left != null)
-            root = root.left;
+    private Node getPredecessor(Node root) {
+        while (root.right != null)
+            root = root.right;
         return root;
     }
+    
     private Node delete(Node root, String key) {
-    if (root == null){
-        return null;
-    }
-    if (key.compareTo(root.value) < 0) {
-        root.left = delete(root.left, key);
-    } else if (key.compareTo(root.value) > 0) {
-        root.right = delete(root.right, key);
-    } else {
-        // Node with one or no child
-        if (root.left == null){
-            return root.right;
+        if (root == null) {
+            return null;
         }
-        else if (root.right == null){
-            return root.left;
+        
+        if (key.compareTo(root.value) < 0) {
+            root.left = delete(root.left, key);
+        } else if (key.compareTo(root.value) > 0) {
+            root.right = delete(root.right, key);
+        } else {
+            // Node with one or no child
+            if (root.left == null) {
+                return root.right;
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+            
+            // Node with two children - get predecessor (rightmost in left subtree)
+            Node temp = getPredecessor(root.left);
+            root.value = temp.value;
+            root.left = delete(root.left, temp.value);
         }
-        // Node with two children
-        Node temp = getSuccessor(root.right);
-        root.value = temp.value;
-        root.right = delete(root.right, temp.value);
+        
+        return balanceTree(root);
     }
-     return balanceTree(root);
-   }
-    public boolean delete(String value) {
+     public boolean delete(String value) {
         if (!search(value)) return false;
         root = delete(root, value);
         size--;
@@ -177,8 +181,54 @@ private Node insert(Node current, String value) {
     public int getSize() {
         return size;
     }
+    
+    public static void main(String[] args) {
+        AVLTree tree = new AVLTree();
+        
+        System.out.println("=== AVL Tree Test ===");
+        
+        // Insert test
+        System.out.println("\nInserting values:");
+        String[] values = {"M", "N", "O", "L", "K", "Q", "P", "H", "I", "A"};
+        for (String value : values) {
+            tree.insert(value);
+            System.out.println("Inserted: " + value);
+        }
+        
+        // Tree info
+        System.out.println("\nTree size: " + tree.getSize());
+        System.out.println("Tree height: " + tree.getHeight());
+        
+        // Traversals
+        System.out.print("\nIn-order traversal: ");
+        tree.traverseInOrder();
+        System.out.print("Pre-order traversal: ");
+        tree.traversePreOrder();
+        System.out.print("Post-order traversal: ");
+        tree.traversePostOrder();
+        
+        // Search tests
+        System.out.println("\n\nSearch for 'M': " + tree.search("M"));
+        
+        System.out.println("\nDeleting root ('H'): " + tree.delete("H"));
+        System.out.println("\nDeleting root ('K'): " + tree.delete("K"));
+        System.out.println("\nDeleting root ('N'): " + tree.delete("N"));
+        
+        // Verify new root
+        System.out.print("\nIn-order");
+        tree.traverseInOrder();
+        System.out.print("Pre-order");
+        tree.traversePreOrder();
+        
+        // Final tree info
+        System.out.println("\nFinal tree size: " + tree.getSize());
+        System.out.println("Final tree height: " + tree.getHeight());
+        System.out.print("\nFinal in-order traversal: ");
+        tree.traverseInOrder();
+        System.out.print("Final pre-order traversal: ");
+        tree.traversePreOrder();
+    }
 
     
    
 }
-
