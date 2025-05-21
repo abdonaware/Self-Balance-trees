@@ -1,7 +1,52 @@
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.TestRule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import static org.junit.Assert.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AVLTreeJUnitTest {
+    
+    private static final String RESULTS_FILE = "test_results.txt";
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    
+    @Rule
+    public TestRule watcher = new TestWatcher() {
+        private long startTime;
+        
+        @Override
+        protected void starting(Description description) {
+            startTime = System.currentTimeMillis();
+            writeToFile("Starting test: " + description.getMethodName());
+        }
+        
+        @Override
+        protected void succeeded(Description description) {
+            long duration = System.currentTimeMillis() - startTime;
+            writeToFile(String.format("Test %s PASSED (%d ms)", 
+                description.getMethodName(), duration));
+        }
+        
+        @Override
+        protected void failed(Throwable e, Description description) {
+            long duration = System.currentTimeMillis() - startTime;
+            writeToFile(String.format("Test %s FAILED (%d ms) - Reason: %s", 
+                description.getMethodName(), duration, e.getMessage()));
+        }
+        
+        private void writeToFile(String message) {
+            try (FileWriter writer = new FileWriter(RESULTS_FILE, true)) {
+                String timestamp = DATE_FORMAT.format(new Date());
+                writer.write(timestamp + " - " + message + "\n");
+            } catch (IOException e) {
+                System.err.println("Error writing to results file: " + e.getMessage());
+            }
+        }
+    };
 
     @Test
     public void testInsertSingleElement_AVL() {

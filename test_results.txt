@@ -1,0 +1,120 @@
+2025-05-21 17:26:55 - Starting test: testLeftRightRotation_AVL
+2025-05-21 17:26:55 - Test testLeftRightRotation_AVL PASSED (20 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteFromSingleElementTree_RB
+2025-05-21 17:26:55 - Test testDeleteFromSingleElementTree_RB FAILED (4 ms) - Reason: Cannot assign field "color" because "node" is null
+2025-05-21 17:26:55 - Starting test: testInsertDuplicateElement_RB
+2025-05-21 17:26:55 - Test testInsertDuplicateElement_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteNodeWithTwoChildren_AVL
+2025-05-21 17:26:55 - Test testDeleteNodeWithTwoChildren_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testLeftRightRotation_RB
+2025-05-21 17:26:55 - Test testLeftRightRotation_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testRightLeftRotation_AVL
+2025-05-21 17:26:55 - Test testRightLeftRotation_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testTreeHeightAfterDeletions_RB
+2025-05-21 17:26:55 - Test testTreeHeightAfterDeletions_RB PASSED (2 ms)
+2025-05-21 17:26:55 - Starting test: testMultipleInsertions_AVL
+2025-05-21 17:26:55 - Test testMultipleInsertions_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testLeftRotation_AVL
+2025-05-21 17:26:55 - Test testLeftRotation_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testSearchEmptyTree_AVL
+2025-05-21 17:26:55 - Test testSearchEmptyTree_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteNodeWithOneChild_RB
+2025-05-21 17:26:55 - Test testDeleteNodeWithOneChild_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testMultipleInsertions_RB
+2025-05-21 17:26:55 - Test testMultipleInsertions_RB PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteLeafNode_RB
+2025-05-21 17:26:55 - Test testDeleteLeafNode_RB PASSED (2 ms)
+2025-05-21 17:26:55 - Starting test: testRightRotation_RB
+2025-05-21 17:26:55 - Test testRightRotation_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testComplexInsertDeleteSequence_RB
+2025-05-21 17:26:55 - Test testComplexInsertDeleteSequence_RB FAILED (0 ms) - Reason: Cannot read field "color" because "node" is null
+2025-05-21 17:26:55 - Starting test: testEmptyTreeProperties_RB
+2025-05-21 17:26:55 - Test testEmptyTreeProperties_RB PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteNodeWithOneChild_AVL
+2025-05-21 17:26:55 - Test testDeleteNodeWithOneChild_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteLeafNode_AVL
+2025-05-21 17:26:55 - Test testDeleteLeafNode_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testSearchEmptyTree_RB
+2025-05-21 17:26:55 - Test testSearchEmptyTree_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testInsertDuplicateElement_AVL
+2025-05-21 17:26:55 - Test testInsertDuplicateElement_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testEmptyTreeProperties_AVL
+2025-05-21 17:26:55 - Test testEmptyTreeProperties_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteNodeWithTwoChildren_RB
+2025-05-21 17:26:55 - Test testDeleteNodeWithTwoChildren_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testInsertSingleElement_AVL
+2025-05-21 17:26:55 - Test testInsertSingleElement_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testRightRotation_AVL
+2025-05-21 17:26:55 - Test testRightRotation_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testLeftRotation_RB
+2025-05-21 17:26:55 - Test testLeftRotation_RB PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testComplexInsertDeleteSequence_AVL
+2025-05-21 17:26:55 - Test testComplexInsertDeleteSequence_AVL FAILED (1 ms) - Reason: expected:<3> but was:<4>
+2025-05-21 17:26:55 - Starting test: testRightLeftRotation_RB
+2025-05-21 17:26:55 - Test testRightLeftRotation_RB PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testDeleteFromSingleElementTree_AVL
+2025-05-21 17:26:55 - Test testDeleteFromSingleElementTree_AVL PASSED (0 ms)
+2025-05-21 17:26:55 - Starting test: testTreeHeightAfterDeletions_AVL
+2025-05-21 17:26:55 - Test testTreeHeightAfterDeletions_AVL PASSED (1 ms)
+2025-05-21 17:26:55 - Starting test: testInsertSingleElement_RB
+2025-05-21 17:26:55 - Test testInsertSingleElement_RB PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testLeftRightRotation_AVL
+2025-05-21 17:27:30 - Test testLeftRightRotation_AVL PASSED (20 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteFromSingleElementTree_RB
+2025-05-21 17:27:30 - Test testDeleteFromSingleElementTree_RB FAILED (4 ms) - Reason: Cannot assign field "color" because "node" is null
+2025-05-21 17:27:30 - Starting test: testInsertDuplicateElement_RB
+2025-05-21 17:27:30 - Test testInsertDuplicateElement_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteNodeWithTwoChildren_AVL
+2025-05-21 17:27:30 - Test testDeleteNodeWithTwoChildren_AVL PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testLeftRightRotation_RB
+2025-05-21 17:27:30 - Test testLeftRightRotation_RB PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testRightLeftRotation_AVL
+2025-05-21 17:27:30 - Test testRightLeftRotation_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testTreeHeightAfterDeletions_RB
+2025-05-21 17:27:30 - Test testTreeHeightAfterDeletions_RB PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testMultipleInsertions_AVL
+2025-05-21 17:27:30 - Test testMultipleInsertions_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testLeftRotation_AVL
+2025-05-21 17:27:30 - Test testLeftRotation_AVL PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testSearchEmptyTree_AVL
+2025-05-21 17:27:30 - Test testSearchEmptyTree_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteNodeWithOneChild_RB
+2025-05-21 17:27:30 - Test testDeleteNodeWithOneChild_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testMultipleInsertions_RB
+2025-05-21 17:27:30 - Test testMultipleInsertions_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteLeafNode_RB
+2025-05-21 17:27:30 - Test testDeleteLeafNode_RB PASSED (0 ms)
+2025-05-21 17:27:30 - Starting test: testRightRotation_RB
+2025-05-21 17:27:30 - Test testRightRotation_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testComplexInsertDeleteSequence_RB
+2025-05-21 17:27:30 - Test testComplexInsertDeleteSequence_RB FAILED (0 ms) - Reason: Cannot read field "color" because "node" is null
+2025-05-21 17:27:30 - Starting test: testEmptyTreeProperties_RB
+2025-05-21 17:27:30 - Test testEmptyTreeProperties_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteNodeWithOneChild_AVL
+2025-05-21 17:27:30 - Test testDeleteNodeWithOneChild_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteLeafNode_AVL
+2025-05-21 17:27:30 - Test testDeleteLeafNode_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testSearchEmptyTree_RB
+2025-05-21 17:27:30 - Test testSearchEmptyTree_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testInsertDuplicateElement_AVL
+2025-05-21 17:27:30 - Test testInsertDuplicateElement_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testEmptyTreeProperties_AVL
+2025-05-21 17:27:30 - Test testEmptyTreeProperties_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteNodeWithTwoChildren_RB
+2025-05-21 17:27:30 - Test testDeleteNodeWithTwoChildren_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testInsertSingleElement_AVL
+2025-05-21 17:27:30 - Test testInsertSingleElement_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testRightRotation_AVL
+2025-05-21 17:27:30 - Test testRightRotation_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testLeftRotation_RB
+2025-05-21 17:27:30 - Test testLeftRotation_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testComplexInsertDeleteSequence_AVL
+2025-05-21 17:27:30 - Test testComplexInsertDeleteSequence_AVL FAILED (1 ms) - Reason: expected:<3> but was:<4>
+2025-05-21 17:27:30 - Starting test: testRightLeftRotation_RB
+2025-05-21 17:27:30 - Test testRightLeftRotation_RB PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testDeleteFromSingleElementTree_AVL
+2025-05-21 17:27:30 - Test testDeleteFromSingleElementTree_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testTreeHeightAfterDeletions_AVL
+2025-05-21 17:27:30 - Test testTreeHeightAfterDeletions_AVL PASSED (1 ms)
+2025-05-21 17:27:30 - Starting test: testInsertSingleElement_RB
+2025-05-21 17:27:30 - Test testInsertSingleElement_RB PASSED (1 ms)
