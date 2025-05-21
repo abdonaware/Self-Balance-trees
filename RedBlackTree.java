@@ -1,5 +1,3 @@
-    
-
 public class RedBlackTree implements SelfBalanceTreeInterface {
     // Red-Black Tree properties
     private static final boolean RED = true;
@@ -262,59 +260,93 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
         }
     }
     private void fixAfterDeletion(Node node) {
-        while (node != root && node.color == BLACK) {
-            if (node == node.parent.left) {
-                Node sibling = node.parent.right;
-                if (sibling.color == RED) {
-                    sibling.color = BLACK;
-                    node.parent.color = RED;
+        // If node is null, we can't fix anything
+        if (node == null) {
+            return;
+        }
+
+        while (node != root && isBlack(node)) {
+            if (node == getLeft(node.parent)) {
+                Node sibling = getRight(node.parent);
+                if (isRed(sibling)) {
+                    setBlack(sibling);
+                    setRed(node.parent);
                     rotateLeft(node.parent);
-                    sibling = node.parent.right;
+                    sibling = getRight(node.parent);
                 }
-                if (sibling.left.color == BLACK && sibling.right.color == BLACK) {
-                    sibling.color = RED;
+                if (isBlack(getLeft(sibling)) && isBlack(getRight(sibling))) {
+                    setRed(sibling);
                     node = node.parent;
                 } else {
-                    if (sibling.right.color == BLACK) {
-                        sibling.left.color = BLACK;
-                        sibling.color = RED;
+                    if (isBlack(getRight(sibling))) {
+                        setBlack(getLeft(sibling));
+                        setRed(sibling);
                         rotateRight(sibling);
-                        sibling = node.parent.right;
+                        sibling = getRight(node.parent);
                     }
                     sibling.color = node.parent.color;
-                    node.parent.color = BLACK;
-                    sibling.right.color = BLACK;
+                    setBlack(node.parent);
+                    setBlack(getRight(sibling));
                     rotateLeft(node.parent);
                     node = root;
                 }
             } else {
-                Node sibling = node.parent.left;
-                if (sibling.color == RED) {
-                    sibling.color = BLACK;
-                    node.parent.color = RED;
+                Node sibling = getLeft(node.parent);
+                if (isRed(sibling)) {
+                    setBlack(sibling);
+                    setRed(node.parent);
                     rotateRight(node.parent);
-                    sibling = node.parent.left;
+                    sibling = getLeft(node.parent);
                 }
-                if (sibling.right.color == BLACK && sibling.left.color == BLACK) {
-                    sibling.color = RED;
+                if (isBlack(getRight(sibling)) && isBlack(getLeft(sibling))) {
+                    setRed(sibling);
                     node = node.parent;
                 } else {
-                    if (sibling.left.color == BLACK) {
-                        sibling.right.color = BLACK;
-                        sibling.color = RED;
+                    if (isBlack(getLeft(sibling))) {
+                        setBlack(getRight(sibling));
+                        setRed(sibling);
                         rotateLeft(sibling);
-                        sibling = node.parent.left;
+                        sibling = getLeft(node.parent);
                     }
                     sibling.color = node.parent.color;
-                    node.parent.color = BLACK;
-                    sibling.left.color = BLACK;
+                    setBlack(node.parent);
+                    setBlack(getLeft(sibling));
                     rotateRight(node.parent);
                     node = root;
                 }
             }
         }
-        node.color = BLACK;
+        setBlack(node);
     }
+    // Add these helper methods
+    private boolean isBlack(Node node) {
+        return node == null || node.color == BLACK;
+    }
+
+    private boolean isRed(Node node) {
+        return node != null && node.color == RED;
+    }
+
+    private void setBlack(Node node) {
+        if (node != null) {
+            node.color = BLACK;
+        }
+    }
+
+    private void setRed(Node node) {
+        if (node != null) {
+            node.color = RED;
+        }
+    }
+
+    private Node getLeft(Node node) {
+        return node == null ? null : node.left;
+    }
+
+    private Node getRight(Node node) {
+        return node == null ? null : node.right;
+    }
+
     public int getSize() {
         return size;
     }

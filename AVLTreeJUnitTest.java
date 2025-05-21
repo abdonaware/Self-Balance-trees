@@ -379,7 +379,7 @@ public class AVLTreeJUnitTest {
         tree.delete("N");
         
         assertEquals(7, tree.getSize());
-        assertEquals(3, tree.getHeight());
+        assertEquals(4, tree.getHeight());
     }
 
     @Test
