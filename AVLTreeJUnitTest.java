@@ -27,14 +27,14 @@ public class AVLTreeJUnitTest {
         @Override
         protected void succeeded(Description description) {
             long duration = System.currentTimeMillis() - startTime;
-            writeToFile(String.format("Test %s PASSED (%d ms)", 
+            writeToFile(String.format("Test %s PASSED (%d ms)\n", 
                 description.getMethodName(), duration));
         }
         
         @Override
         protected void failed(Throwable e, Description description) {
             long duration = System.currentTimeMillis() - startTime;
-            writeToFile(String.format("Test %s FAILED (%d ms) - Reason: %s", 
+            writeToFile(String.format("Test %s FAILED (%d ms) - Reason: %s\n", 
                 description.getMethodName(), duration, e.getMessage()));
         }
         
