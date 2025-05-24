@@ -1,14 +1,14 @@
-public class RedBlackTree implements SelfBalanceTreeInterface {
+public class RedBlackTree<T extends Comparable<T>> implements SelfBalanceTreeInterface<T> {
     // Red-Black Tree properties
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
     private class Node {
-        String value;
+        T value;
         boolean color;
         Node left, right, parent;
 
-        Node(String value) {
+        Node(T value) {
             this.value = value;
             this.color = RED; // New nodes are always red
             this.left = null;
@@ -26,34 +26,33 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
     }
 
     @Override
-    public boolean insert(String value){
+    public boolean insert(T value) {
         Node newNode = new Node(value);
         if (root == null) {
             root = newNode;
-            
         } else {
             Node parent = null;
             Node current = root;
 
             while (current != null) {
                 parent = current;
-                if (newNode.value.compareTo(current.value) < 0) {
+                int comparison = value.compareTo(current.value);
+                if (comparison < 0) {
                     current = current.left;
-                } else if (newNode.value.compareTo(current.value) > 0) {
+                } else if (comparison > 0) {
                     current = current.right;
-                }else {
+                } else {
                     return false; // Duplicate value
                 }
             }
 
             newNode.parent = parent;
 
-            if (newNode.value.compareTo(parent.value) < 0) {
+            if (value.compareTo(parent.value) < 0) {
                 parent.left = newNode;
             } else {
                 parent.right = newNode;
             }
-
         }
         fixViolation(newNode);
         size++;
@@ -61,7 +60,7 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
     }
 
     @Override
-    public boolean delete(String value){
+    public boolean delete(T value) {
         Node nodeToDelete = searchNode(root, value);
         if (nodeToDelete == null) {
             return false; // Value not found
@@ -70,24 +69,20 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
         size--;
         return true;
     }
+
     @Override
-    public boolean search(String value){
+    public boolean search(T value) {
         return searchNode(root, value) != null;
     }
-    @Override
-    public void traverseInOrder(){
-        inOrderTraversal(root);
-        System.out.println();
+
+    private Node searchNode(Node node, T value) {
+        if (node == null || value.equals(node.value)) {
+            return node;
         }
-    @Override
-    public void traversePreOrder(){
-        preOrderTraversal(root);
-        System.out.println();
+        if (value.compareTo(node.value) < 0) {
+            return searchNode(node.left, value);
         }
-    @Override
-    public void traversePostOrder(){
-        postOrderTraversal(root);
-        System.out.println();
+        return searchNode(node.right, value);
     }
 
     private void rotateLeft(Node node) {
@@ -182,16 +177,7 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
         }
         root.color = BLACK; // Ensure the root is always black  
 }
-    private Node searchNode(Node node, String value) {
-        if (node == null || node.value.equals(value)) {
-            return node;
-        }
-        if (value.compareTo(node.value) < 0) {
-            return searchNode(node.left, value);
-        }
-        return searchNode(node.right, value);
-    }
-
+    
     private void inOrderTraversal(Node node) {
         if (node != null) {
             inOrderTraversal(node.left);
@@ -362,4 +348,20 @@ public class RedBlackTree implements SelfBalanceTreeInterface {
         }
         return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
     }
+    @Override
+    public void traverseInOrder() {
+        inOrderTraversal(root);
+        System.out.println();
+    }
+    @Override
+    public void traversePreOrder() {
+        preOrderTraversal(root);
+        System.out.println();
+    }
+    @Override
+    public void traversePostOrder() {
+        postOrderTraversal(root);
+        System.out.println();
+    }
+
 }

@@ -1,20 +1,93 @@
-public class AVLTree implements SelfBalanceTreeInterface {
+public class AVLTree<T extends Comparable<T>> implements SelfBalanceTreeInterface<T> {
     class Node {
-        String  value;
+        T value;
         Node left;
         Node right;
         int height;
 
-        public Node(String  value) {
+        public Node(T value) {
             this.value = value;
             this.height = 1;
             this.left = null;
             this.right = null;
         }
     }
+    
     private Node root = null;
     private int size = 0;
-   public int height(Node node) {
+
+    // Update insert method
+    @Override
+    public boolean insert(T value) {
+        if (search(value)) return false; // Avoid duplicates
+        root = insert(root, value);
+        size++;
+        return true;
+    }
+
+    private Node insert(Node current, T value) {
+        if (current == null) {
+            return new Node(value);
+        }
+        if (value.compareTo(current.value) < 0) {
+            current.left = insert(current.left, value);
+        } else if (value.compareTo(current.value) > 0) {
+            current.right = insert(current.right, value);
+        }
+        return balanceTree(current);
+    }
+
+    // Update search methods
+    public boolean search(T value) {
+        return search(root, value) != null;
+    }
+
+    private Node search(Node current, T value) {
+        if (current == null || value.equals(current.value)) {
+            return current;
+        }
+        if (value.compareTo(current.value) < 0) {
+            return search(current.left, value);
+        } else {
+            return search(current.right, value);   
+        }
+    }
+
+    // Update delete methods
+    @Override
+    public boolean delete(T value) {
+        if (!search(value)) return false;
+        root = delete(root, value);
+        size--;
+        return true;
+    }
+
+    private Node delete(Node root, T key) {
+        if (root == null) {
+            return null;
+        }
+        
+        if (key.compareTo(root.value) < 0) {
+            root.left = delete(root.left, key);
+        } else if (key.compareTo(root.value) > 0) {
+            root.right = delete(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+            
+            Node temp = getPredecessor(root.left);
+            root.value = temp.value;
+            root.left = delete(root.left, temp.value);
+        }
+        
+        return balanceTree(root);
+    }
+
+    public int height(Node node) {
         if (node == null) {
             return 0;
         }
@@ -72,76 +145,12 @@ public class AVLTree implements SelfBalanceTreeInterface {
         }
         return root;
     }
-    @Override
-    public boolean insert(String value) {
-        if (search(value)) return false; // Avoid duplicates
-        root = insert(root, value);
-        size++;
-        return true;
-    }
-private Node insert(Node current, String value) {
-    if (current == null) {
-        return new Node(value);
-    }
-    if (value.compareTo(current.value) < 0) {
-        current.left = insert(current.left, value);
-    } else if (value.compareTo(current.value) > 0) {
-        current.right = insert(current.right, value);
-    }
-    return balanceTree(current);
- }
-
-    public boolean search(String value){
-        return search(root, value) != null;
-    }
-    private Node search(Node current, String value) {
-        if (current == null || value.equals(current.value)) {
-            return current;
-        }
-        if (value.compareTo(current.value) < 0) {
-            return search(current.left, value);
-        } else {
-            return search(current.right, value);   
-        }
-    }
     private Node getPredecessor(Node root) {
         while (root.right != null)
             root = root.right;
         return root;
     }
     
-    private Node delete(Node root, String key) {
-        if (root == null) {
-            return null;
-        }
-        
-        if (key.compareTo(root.value) < 0) {
-            root.left = delete(root.left, key);
-        } else if (key.compareTo(root.value) > 0) {
-            root.right = delete(root.right, key);
-        } else {
-            // Node with one or no child
-            if (root.left == null) {
-                return root.right;
-            }
-            else if (root.right == null) {
-                return root.left;
-            }
-            
-            // Node with two children - get predecessor (rightmost in left subtree)
-            Node temp = getPredecessor(root.left);
-            root.value = temp.value;
-            root.left = delete(root.left, temp.value);
-        }
-        
-        return balanceTree(root);
-    }
-     public boolean delete(String value) {
-        if (!search(value)) return false;
-        root = delete(root, value);
-        size--;
-        return true;
-    }
     public void traverseInOrder() {
     traverseInOrder(root);
     System.out.println(); 
@@ -183,16 +192,23 @@ private Node insert(Node current, String value) {
     }
     
     public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         
         System.out.println("=== AVL Tree Test ===");
         
-        // Insert test
-        System.out.println("\nInserting values:");
+        // Test with Strings
         String[] values = {"M", "N", "O", "L", "K", "Q", "P", "H", "I", "A"};
         for (String value : values) {
             tree.insert(value);
             System.out.println("Inserted: " + value);
+        }
+
+        // Test with Integers
+        AVLTree<Integer> intTree = new AVLTree<>();
+        Integer[] numbers = {10, 20, 30, 40, 50, 25};
+        for (Integer num : numbers) {
+            intTree.insert(num);
+            System.out.println("Inserted: " + num);
         }
         
         // Tree info

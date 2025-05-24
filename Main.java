@@ -7,9 +7,9 @@ public class Main {
     private static final String GREEN = "\u001B[32m";
     private static final String RED = "\u001B[31m";
     private static final String RESET = "\u001B[0m";
-    private SelfBalanceTreeInterface selfBalanceTree;
+    private SelfBalanceTreeInterface<String> selfBalanceTree;
 
-    public Main(SelfBalanceTreeInterface selfBalanceTree) {
+    public Main(SelfBalanceTreeInterface<String> selfBalanceTree) {
         this.selfBalanceTree = selfBalanceTree;
     }
 
@@ -53,14 +53,14 @@ public class Main {
         System.out.println("Please choose the type of tree you want to create \n1-AVL\n2-RedBlack: ");
         int choice = scanner.nextInt();
 
-        SelfBalanceTreeInterface selfBalanceTree;
+        SelfBalanceTreeInterface<String> selfBalanceTree ;
 
         switch (choice) {
             case 1:
-                selfBalanceTree = new AVLTree();
+                selfBalanceTree = new AVLTree<>();
                 break;
             case 2:
-                selfBalanceTree = new RedBlackTree();
+                selfBalanceTree = new RedBlackTree<>();
                 break;
             default:
                 System.out.println("Invalid choice");

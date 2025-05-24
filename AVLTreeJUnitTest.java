@@ -50,7 +50,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testInsertSingleElement_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         assertTrue(tree.insert("Apple"));
         assertEquals(1, tree.getSize());
         assertTrue(tree.search("Apple"));
@@ -58,7 +58,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testInsertDuplicateElement_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("Banana");
         assertFalse(tree.insert("Banana"));
         assertEquals(1, tree.getSize());
@@ -66,13 +66,13 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testSearchEmptyTree_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         assertFalse(tree.search("Cherry"));
     }
 
     @Test
     public void testDeleteFromSingleElementTree_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("Date");
         assertTrue(tree.delete("Date"));
         assertEquals(0, tree.getSize());
@@ -81,7 +81,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testLeftRotation_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("A");
         tree.insert("B");
         tree.insert("C"); // Should trigger left rotation
@@ -91,7 +91,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testRightRotation_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("C");
         tree.insert("B");
         tree.insert("A"); // Should trigger right rotation
@@ -101,7 +101,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testLeftRightRotation_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("C");
         tree.insert("A");
         tree.insert("B"); // Should trigger LR rotation
@@ -111,7 +111,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testRightLeftRotation_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("A");
         tree.insert("C");
         tree.insert("B"); // Should trigger RL rotation
@@ -121,7 +121,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testMultipleInsertions_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("E");
         tree.insert("C");
         tree.insert("G");
@@ -135,7 +135,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteLeafNode_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("B");
         tree.insert("A");
         tree.insert("C");
@@ -146,7 +146,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteNodeWithOneChild_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("B");
         tree.insert("A");
         tree.insert("C");
@@ -158,7 +158,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteNodeWithTwoChildren_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("D");
         tree.insert("B");
         tree.insert("F");
@@ -173,7 +173,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testTreeHeightAfterDeletions_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("D");
         tree.insert("B");
         tree.insert("F");
@@ -189,7 +189,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testComplexInsertDeleteSequence_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         tree.insert("M");
         tree.insert("N");
         tree.insert("O");
@@ -213,7 +213,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testEmptyTreeProperties_AVL() {
-        AVLTree tree = new AVLTree();
+        AVLTree<String> tree = new AVLTree<>();
         assertEquals(0, tree.getSize());
         assertEquals(0, tree.getHeight());
         assertFalse(tree.delete("Any"));
@@ -221,7 +221,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testInsertSingleElement_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         assertTrue(tree.insert("Apple"));
         assertEquals(1, tree.getSize());
         assertTrue(tree.search("Apple"));
@@ -229,7 +229,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testInsertDuplicateElement_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("Banana");
         assertFalse(tree.insert("Banana"));
         assertEquals(1, tree.getSize());
@@ -237,13 +237,13 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testSearchEmptyTree_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         assertFalse(tree.search("Cherry"));
     }
 
     @Test
     public void testDeleteFromSingleElementTree_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("Date");
         assertTrue(tree.delete("Date"));
         assertEquals(0, tree.getSize());
@@ -252,7 +252,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testLeftRotation_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("A");
         tree.insert("B");
         tree.insert("C"); // Should trigger left rotation
@@ -262,7 +262,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testRightRotation_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("C");
         tree.insert("B");
         tree.insert("A"); // Should trigger right rotation
@@ -272,7 +272,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testLeftRightRotation_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("C");
         tree.insert("A");
         tree.insert("B"); // Should trigger LR rotation
@@ -282,7 +282,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testRightLeftRotation_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("A");
         tree.insert("C");
         tree.insert("B"); // Should trigger RL rotation
@@ -292,7 +292,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testMultipleInsertions_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("E");
         tree.insert("C");
         tree.insert("G");
@@ -306,7 +306,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteLeafNode_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("B");
         tree.insert("A");
         tree.insert("C");
@@ -317,7 +317,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteNodeWithOneChild_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("B");
         tree.insert("A");
         tree.insert("C");
@@ -329,7 +329,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testDeleteNodeWithTwoChildren_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("D");
         tree.insert("B");
         tree.insert("F");
@@ -344,7 +344,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testTreeHeightAfterDeletions_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("D");
         tree.insert("B");
         tree.insert("F");
@@ -360,7 +360,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testComplexInsertDeleteSequence_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         tree.insert("M");
         tree.insert("N");
         tree.insert("O");
@@ -384,7 +384,7 @@ public class AVLTreeJUnitTest {
 
     @Test
     public void testEmptyTreeProperties_RB() {
-        RedBlackTree tree = new RedBlackTree();
+        RedBlackTree<String> tree = new RedBlackTree<>();
         assertEquals(0, tree.getSize());
         assertEquals(0, tree.getHeight());
         assertFalse(tree.delete("Any"));
